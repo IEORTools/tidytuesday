@@ -25,3 +25,14 @@ ggplot(hmtemp, aes(x=review_rating, y=log_budget_num)) +
   ggtitle("Tidy Tuesday Horror Movie Ratings vs Budget") +
   ylab("log(Budget)") +
   xlab("Movie Rating")
+
+
+#### budget vs run time #####
+hmtemp2 <- hm[which(hm$budget_unit=="$" & hm$movie_run_time_num>0),]
+
+ggplot(hmtemp2, aes(x=log_budget_num, y=movie_run_time_num)) +
+  geom_point() +
+  geom_smooth(method='lm',formula=y~x) +
+  xlab("Log(Budget $)") + ylab("Movie Run Time (min.)") +
+  ggtitle("Tidy Tuesday: Horror Movie Budget vs Run Time")
+ 
